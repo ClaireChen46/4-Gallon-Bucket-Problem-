@@ -1,9 +1,12 @@
 from collections import deque
 
 def is_goal_state(state):
+    # Check if the current state is the goal state
+    # The goal is to have 4 gallons in either bucket
     return state[0] == 4 or state[1] == 4
 
 def get_neighbors(state):
+    # Generate all possible next states from the current state
     x, y = state
     neighbors = []
     # Fill the 3-gallon bucket
@@ -14,27 +17,48 @@ def get_neighbors(state):
     neighbors.append((0, y))
     # Empty the 5-gallon bucket
     neighbors.append((x, 0))
-    # Pour from 3-gallon to 5-gallon
+    # Pour water from the 3-gallon bucket into the 5-gallon bucket
     transfer = min(x, 5 - y)
     neighbors.append((x - transfer, y + transfer))
-    # Pour from 5-gallon to 3-gallon
+    # Pour water from the 5-gallon bucket into the 3-gallon bucket
     transfer = min(y, 3 - x)
     neighbors.append((x + transfer, y - transfer))
     return neighbors
 
 def solve_bucket_problem():
+    # Initialize the starting state: both buckets are empty
     initial_state = (0, 0)
+    # Use a deque to implement the BFS queue
+    # The queue stores tuples of (state, steps), where state is the current state and steps is the number of steps taken to reach it
     queue = deque([(initial_state, 0)])
+    # Use a set to keep track of visited states to avoid revisiting them
     visited = set([initial_state])
 
+    # Continue the BFS loop until the queue is empty
     while queue:
+        # Dequeue the next state and step count
         state, steps = queue.popleft()
+        # Print the current step and state for visualization
+        print(f"Step {steps}: State {state}")
+        # Check if the current state is the goal state
         if is_goal_state(state):
             return steps
+        # Get all possible next states from the current state
         for neighbor in get_neighbors(state):
+            # If the neighbor state has not been visited, add it to the queue and mark it as visited
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append((neighbor, steps + 1))
+    # If the loop completes without finding the goal state, return -1 to indicate no solution was found within the step limit
+    return -1
+
+# Call the solve_bucket_problem function and print the result
+steps = solve_bucket_problem()
+if steps != -1:
+    print(f"Solution found in {steps} steps")
+else:
+    print("No solution found within the step limit")
+
     return -1
 
 steps = solve_bucket_problem()
