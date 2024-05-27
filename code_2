@@ -1,0 +1,62 @@
+from collections import deque
+
+def solve_bucket_problem():
+    initial_state = (0, 0)
+    queue = deque([(initial_state, 0)])  # No need to store the parent state in the queue
+    visited = set([initial_state])
+    parent_map = {initial_state: (None, None)}  # The initial state has no parent
+
+    while queue:
+        state, steps = queue.popleft()
+
+        # Check if the current state is the goal state
+        if is_goal_state(state):
+            # Trace back the path
+            path = [] # path = [((3, 4), 6)]
+            current = state # now current is (3, 4)
+            while current is not None:
+                path.append((current, steps))     # parent_map[(3, 4)] = ((2, 5), some_previous_steps)
+                current, steps = parent_map[current]  # Correctly trace back to the parent state and steps
+            path.reverse()
+
+            # Print the path
+            for s, step in path:
+                print(f"Step {step}: State {s}")
+            print(f"Goal reached: State {path[-1][0]} at step {path[-1][1]}")
+            return path[-1][1]  # Return the number of steps found
+
+        # Explore all possible neighboring states
+        for neighbor in get_neighbors(state):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, steps + 1))
+                parent_map[neighbor] = (state, steps)  # Record the state and steps to reach this neighbor
+
+    return -1  # Return -1 if no goal state is found
+
+def is_goal_state(state):
+     # Check if one bucket exactly contains 4 gallons and the other is empty
+     return (state[0] == 4 and state[1] == 0) or (state[1] == 4 and state[0] == 0)
+
+def get_neighbors(state):
+    # Generate all possible next states from the current state
+    x, y = state
+    neighbors = []
+    # Fill the 3-gallon bucket
+    neighbors.append((3, y))
+    # Fill the 5-gallon bucket
+    neighbors.append((x, 5))
+    # Empty the 3-gallon bucket
+    neighbors.append((0, y))
+    # Empty the 5-gallon bucket
+    neighbors.append((x, 0))
+    # Pour water from the 3-gallon bucket into the 5-gallon bucket
+    transfer = min(x, 5 - y)
+    neighbors.append((x - transfer, y + transfer))
+    # Pour water from the 5-gallon bucket into the 3-gallon bucket
+    transfer = min(y, 3 - x)
+    neighbors.append((x + transfer, y - transfer))
+    return neighbors
+
+# Call the function and print the result
+solve_bucket_problem()
