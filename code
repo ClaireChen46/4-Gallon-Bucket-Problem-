@@ -2,23 +2,23 @@ from collections import deque
 
 def solve_bucket_problem():
     initial_state = (0, 0)
-    queue = deque([(initial_state, 0)]) 
+    queue = deque([(initial_state, 0)])  # No need to store the parent state in the queue
     visited = set([initial_state])
-    parent_map = {initial_state: (None, None)} 
+    parent_map = {initial_state: (None, None)}  # The initial state has no parent
 
     while queue:
         state, steps = queue.popleft()
-        
+
         # Check if the current state is the goal state
         if is_goal_state(state):
             # Trace back the path
-            path = []
-            current = state
+            path = [] # path = [((3, 4), 6)]
+            current = state # now current is (3, 4)
             while current is not None:
-                path.append((current, steps))
+                path.append((current, steps))     # parent_map[(3, 4)] = ((2, 5), some_previous_steps)
                 current, steps = parent_map[current]  # Correctly trace back to the parent state and steps
             path.reverse()
-            
+
             # Print the path
             for s, step in path:
                 print(f"Step {step}: State {s}")
@@ -35,9 +35,8 @@ def solve_bucket_problem():
     return -1  # Return -1 if no goal state is found
 
 def is_goal_state(state):
-    # Check if any bucket exactly contains 4 gallons of water
-    return state[0] == 4 or state[1] == 4
-
+    # Check if the total amount of water in both buckets equals 4 gallons
+    return (state[0] + state[1] == 4)
 
 def get_neighbors(state):
     # Generate all possible next states from the current state
