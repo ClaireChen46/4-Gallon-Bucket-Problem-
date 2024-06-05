@@ -1,7 +1,7 @@
 #*********************************************************************************#
-# FILE: 4_gallon.sh                                                               #
+# FILE: 4Gallon_code1                                                             #
 #                                                                                 #
-# USAGE: 4_gallon.sh                                                              #
+# USAGE: 4Gallon_code1                                                            #
 #                                                                                 #
 # DESCRIPTION: Solves the problem of fetching exactly 4 gallons                   #
 #              using a 3 and 5-gallon bucket.                                     #
