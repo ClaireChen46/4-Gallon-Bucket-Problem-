@@ -1,7 +1,7 @@
 #*********************************************************************************#
-# FILE: 4_gallon.sh                                                               #
+# FILE: fourgallon_code2                                                          #
 #                                                                                 #
-# USAGE: 4_gallon.sh                                                              #
+# USAGE: fourgallon_code2                                                         #
 #                                                                                 #
 # DESCRIPTION: Solves the problem of fetching exactly 4 gallons                   #
 #              using a 3 and 5-gallon bucket.                                     #
@@ -23,6 +23,7 @@
 #                                                                                 #
 #*********************************************************************************#
 
+#    Scripts start below
 from collections import deque
 
 def solve_bucket_problem():
