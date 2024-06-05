@@ -6,8 +6,6 @@
 # DESCRIPTION: Solves the problem of fetching exactly 4 gallons                   #
 #              using a 3 and 5-gallon bucket.                                     #
 #                                                                                 #
-# OPTIONS: List options for the script [-h]                                       #
-#                                                                                 #
 # DEVELOPER: Claire Chen                                                          #
 # DEVELOPER PHONE: +1(504) 619-7541                                               #
 # DEVELOPER EMAIL: JCH2349@emory.edu                                              #
