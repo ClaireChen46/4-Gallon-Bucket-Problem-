@@ -1,3 +1,32 @@
+#*********************************************************************************#
+# FILE: 4_gallon.sh                                                               #
+#                                                                                 #
+# USAGE: 4_gallon.sh                                                              #
+#                                                                                 #
+# DESCRIPTION: Solves the problem of fetching exactly 4 gallons                   #
+#              using a 3 and 5-gallon bucket.                                     #
+#                                                                                 #
+# OPTIONS: List options for the script [-h]                                       #
+#                                                                                 #
+# DEVELOPER: Claire Chen                                                          #
+# DEVELOPER PHONE: +1(504) 619-7541                                               #
+# DEVELOPER EMAIL: JCH2349@emory.edu                                              #
+#                                                                                 #
+# VERSION: 1.0                                                                    #
+# CREATED DATE-TIME: 20240523-10:00 Eastern Time Zone USA                         #
+#                                                                                 #
+# VERSION: 1.1                                                                    #
+# REVISION DATE-TIME: YYYYMMDD-HH:MM                                              #
+# DEVELOPER MAKING CHANGE: First_name Last_name                                   #
+# DEVELOPER MAKING CHANGE: PHONE: +1 (XXX) XXX-XXXX                               #
+# DEVELOPER MAKING CHANGE: EMAIL: first.last@email.com                            #
+#                                                                                 #
+#*********************************************************************************#
+
+
+
+
+
 from collections import deque
 
 def solve_bucket_problem():
