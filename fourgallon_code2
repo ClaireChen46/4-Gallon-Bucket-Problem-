@@ -22,6 +22,7 @@
 #*********************************************************************************#
 
 #    Scripts start below
+
 from collections import deque
 
 def solve_bucket_problem():
